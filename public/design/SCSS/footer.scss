@@ -1,0 +1,20 @@
+footer {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    border-top: 1px solid $border;
+    width: 100%;
+
+    & .item {
+        padding: 15px 20px;
+    }
+
+    & .left {
+        border-right: 1px solid $border;
+    }
+
+    & .right {
+        border-left: 1px solid $border;
+    }
+}

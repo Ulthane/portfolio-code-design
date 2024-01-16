@@ -1,0 +1,111 @@
+@import 'variables';
+@import 'globals';
+@import 'header';
+@import 'footer';
+@import 'aboutme';
+@import 'bootstrap/bootstrap.scss';
+
+@include gFonts('Fira+Code', '300..700');
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100vh;
+}
+
+body {
+    background-color: $bg;
+    margin: 0;
+    font-family: 'Fira Code', Arial, Helvetica, sans-serif;
+    color: $light-blue;
+    height: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    transition: all .3s ease;
+
+    &:hover {
+        color: $light;
+    }
+}
+
+h1, h3 {
+    font-weight: 300;
+}
+
+.text-light-blue {
+    color: $light-blue;
+}
+
+.icon {
+    font-size: 25px;
+}
+
+.section-left {
+    margin-left: 400px;
+}
+
+.h-90 {
+    height: 90%;
+}
+
+.h-5 {
+    height: 5%;
+}
+
+.blur-section {
+    position: absolute;
+    left: 38%;
+    bottom: 30%;
+
+    & img {
+        width: 750px;
+    }
+
+    &__blue {
+        position: absolute;
+        top: 225px;
+        left: 300px;
+    }
+}
+
+.border-right-custom {
+    border-right: 1px solid $border;
+}
+
+.border-bottom-custom {
+    border-bottom: 1px solid $border;
+}
+
+.anim-to-bottom {
+    animation: toBottom 1s cubic-bezier(.18,.89,.32,1.28);
+}
+
+.anim-to-top {
+    animation: toTop 1s cubic-bezier(.18,.89,.32,1.28);
+}
+
+@keyframes toBottom {
+    from {
+        transform: translateY(-1500px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes toTop {
+    from {
+        transform: translateY(1500px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}

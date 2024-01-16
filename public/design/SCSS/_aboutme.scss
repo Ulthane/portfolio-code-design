@@ -1,0 +1,27 @@
+.navigation {
+    height: 100%;
+    width: 50px;
+    border-right: 1px solid $border;
+
+    &__active {
+        color: $light;
+    }
+}
+
+.sub-navigation {
+    width: 250px;
+    height: 100%;
+
+    & .title {
+        width: 100%;
+        color: $light;
+
+        & p {
+            margin: 10px;
+            &::before {
+                content: "▼";
+                margin-right: 10px;
+            }
+        }
+    }
+}
