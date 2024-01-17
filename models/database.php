@@ -1,22 +1,14 @@
 <?php
-    class databaseManager {
-        private $_db;
+    class DatabaseManager {
 
-        function __construct() {
-            $this->_db = $this->setConnection();
-        }
-
-        function setConnection() {
+        public static function getConnection() {
             try {
                 return new PDO('mysql:host=10.0.0.204;dbname=portfolio;charset=utf8', 'portfolio_usr', 'password');
             }
-            catch {
-                throw new Exception("Impossible de se connecter à la base de données.");
+            catch (Exception $e) {
+                throw new Exception($e->getMessage());
             }
         }
-
-        function getConnection() {
-            return $this->_db;
-        }
+        
     }
 ?>

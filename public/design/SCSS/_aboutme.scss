@@ -1,6 +1,6 @@
 .navigation {
     height: 100%;
-    width: 50px;
+    width: 66px;
     border-right: 1px solid $border;
 
     &__active {
@@ -9,7 +9,7 @@
 }
 
 .sub-navigation {
-    width: 250px;
+    width: 265px;
     height: 100%;
 
     & .title {
@@ -20,8 +20,41 @@
             margin: 10px;
             &::before {
                 content: "▼";
+                font-size: 10px;
                 margin-right: 10px;
             }
         }
+    }
+}
+
+.select-content {
+    & .title {
+        width: 250px;
+        color: $light-blue;
+        padding: 10px;
+
+        &::after {
+            content: "x";
+            margin: 0 5px;
+        }
+    }
+
+    & .content-section {
+        position: relative;
+    }
+
+    & .scrollbar {
+        width: 20px;
+        position: absolute;
+        right: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    & .rectangle {
+        width: 15px;
+        height: 10px;
+        margin-top: 2px;
+        background-color: $light-blue;
     }
 }

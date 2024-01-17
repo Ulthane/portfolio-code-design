@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<div class="row h-90 overflow-hidden">
+<div class="d-flex h-100 align-items-center row overflow-hidden">
     <section class="anim-to-top col d-flex flex-column justify-content-center">
         <div class="my-4 section-left">
             <p class="text-light my-2">Bonjour à tous, je m'appelle</p>
@@ -17,13 +17,13 @@
         </div>
     </section>
 
-    <section class="col d-flex h-100 flex-column justify-content-center overflow-hidden">
+    <section class="mx-5 col">
         <div class="blur-section">
             <img class="blur-section__green" src="public/assets/images/green.png" alt="effet de flou vert">
             <img class="blur-section__blue" src="public/assets/images/blue.png" alt="effet de flou bleu">
         </div>
 
-        <div class="anim-to-bottom">
+        <div class="w-75 anim-to-bottom">
             <?php 
             $o = .33;
             for ($i=0; $i<5; $i++) { 
@@ -38,7 +38,6 @@
             ?> 
         </div>
     </section>
-
 </div>
 
 <?php 

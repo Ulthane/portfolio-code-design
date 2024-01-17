@@ -1,3 +1,5 @@
+// sass public/design/SCSS/default.scss public/design/CSS/default.css -s compressed --watch
+
 @import 'variables';
 @import 'globals';
 @import 'header';
@@ -21,6 +23,7 @@ body {
     font-family: 'Fira Code', Arial, Helvetica, sans-serif;
     color: $light-blue;
     height: 100%;
+    overflow-y: hidden;
 }
 
 li {
@@ -40,6 +43,10 @@ h1, h3 {
     font-weight: 300;
 }
 
+h6 {
+    font-size: 14px;
+}
+
 .text-light-blue {
     color: $light-blue;
 }
@@ -52,12 +59,8 @@ h1, h3 {
     margin-left: 400px;
 }
 
-.h-90 {
-    height: 90%;
-}
-
-.h-5 {
-    height: 5%;
+.section-central {
+    margin-top: 57px;
 }
 
 .blur-section {
@@ -80,8 +83,21 @@ h1, h3 {
     border-right: 1px solid $border;
 }
 
+.border-left-custom {
+    border-left: 1px solid $border;
+}
+
 .border-bottom-custom {
     border-bottom: 1px solid $border;
+}
+
+.border-top-custom {
+    border-top: 1px solid $border;
+}
+
+.dir-icon {
+    width: 16px;
+    height: 14px;
 }
 
 .anim-to-bottom {
