@@ -5,6 +5,9 @@
 @import 'header';
 @import 'footer';
 @import 'aboutme';
+@import 'project';
+@import 'error-500';
+@import 'error-404';
 @import 'bootstrap/bootstrap.scss';
 
 @include gFonts('Fira+Code', '300..700');
@@ -39,12 +42,34 @@ a {
     }
 }
 
-h1, h3 {
+h1, h3, h5 {
     font-weight: 300;
+}
+
+h3, h5 {
+    text-align: center;
 }
 
 h6 {
     font-size: 14px;
+}
+
+button {
+    background-color: $border;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+
+    &:hover {
+        background-color: lighten($border, 8%);
+    }
+}
+
+.error {
+    width: 800px;
+    margin: 0 auto;
 }
 
 .text-light-blue {

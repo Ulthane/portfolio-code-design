@@ -10,10 +10,16 @@
             case 'about-me':
                 aboutMePage();
                 break;
-            default:
+            case 'error':
+                error();
+                break;
+            case 'home':
                 homePage();
+                break;
+            default:
+                error();
                 break;
         }
     } else {
-        homepage();
+        homePage();
     }

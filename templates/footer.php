@@ -7,7 +7,7 @@
     </div>
 
     <div>
-        <div class="item right"><a class="text-light-blue" href="#">@username <i class="icon fa-brands fa-github"></i></a></div>
+        <div class="item right"><a class="text-light-blue" href="https://github.com/Ulthane?tab=repositories" target="_blank">@Ulthane <i class="icon fa-brands fa-github"></i></a></div>
     </div>
 </footer>
 

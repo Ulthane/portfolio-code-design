@@ -1,0 +1,64 @@
+.title-project {
+    width: 330px;
+    color: $light;
+
+    & p {
+        margin: 10px;
+        &::before {
+            content: "▼";
+            font-size: 10px;
+            margin-right: 10px;
+        }
+    }
+}
+
+.filter {
+    &__item {
+        width: 65px;
+    }
+}
+
+.project-card {
+    border-radius: 10px;
+    border: 1px solid $border;
+    position: relative;
+    overflow: hidden;
+    max-width: 400px;
+    background-color: $bg;
+
+    &__title {
+        font-weight: 700;
+    }
+
+    &__bg {
+        // border-radius: 10px;
+        width: 400px;
+    }
+
+    & .window {
+        max-height: 120px;
+        overflow: hidden;
+        position: relative;
+
+        &__icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            
+            & img {
+                width: 25px;
+                border-radius: 5px;
+            }
+        }
+    }
+
+    &__footer {
+        position: absolute;
+        bottom: 0;
+        height: 150px;
+        width: 100%;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        background-color: $bg;
+    }
+}

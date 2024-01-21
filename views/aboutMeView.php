@@ -1,14 +1,4 @@
-<?php 
-    require('templates/navigation.php');
-    require('models/infoManager.php');
-
-    $infoManger = new InfoManager();
-    $category = $infoManger->getPICategory();
-    $title = $infoManger->getPITitle();
-    $content = $infoManger->getPIContent($_GET['id']);
-
-    ob_start();
-?>
+<?php ob_start(); ?>
 
 <div class="h-100 d-flex section-central">
     <!-- Section qui affiche la navigation -->
@@ -34,7 +24,7 @@
                 <?php foreach($title[$c['name']] as $con) { ?>
                     <div class="d-flex align-items-center ms-4">
                         <img class="dir-icon mx-2" src="public/assets/images/markdown.png" alt="icone markdown">
-                        <a class="<?php echo ($_GET['id'] == $con['id'] ? "text-light" : "text-light-blue") ?>" href=<?= 'index.php?page=about-me&id='.$con['id'] ?>><?= $con['title'] ?></a>
+                        <a class="<?php echo ($_GET['id'] == $con['id'] ? "text-light" : "text-light-blue") ?>" href=<?= 'index.php?page=about-me&category='.$_GET['category'].'&id='.$con['id'] ?>><?= $con['title'] ?></a>
                     </div>
                 <?php }
 
@@ -72,11 +62,12 @@
         </div>
     </section>
 
-    <section class="m-0 col content-section">
+    <section class="m-0 col content-section d-flex flex-column justify-content-center align-items-center">
+        <h5>Code Review</h5>
+        <h3>Coming Soon</h3>
     </section>
 </div>
 
 <?php 
     $content = ob_get_clean();
-     require('templates/base.php'); 
 ?>
