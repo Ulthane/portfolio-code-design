@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 
 <div class="d-flex h-100 align-items-center row overflow-hidden">
-    <section class="anim-to-top col d-flex flex-column justify-content-center">
+    <section class="anim-to-top col d-flex flex-column justify-content-center" id="prez-col">
         <div class="my-4 section-left">
             <p class="text-light my-2">Bonjour à tous, je m'appelle</p>
             <h1 class="text-light my-2">Sebastien M.</h1>
@@ -15,13 +15,14 @@
                 <span class="text-info">const<span> <span class="text-success">githubLink</span> = <span class="text-primary">"https://github.com/example/url"</span>
             </p>
         </div>
-    </section>
-
-    <section class="mx-5 col">
         <div class="blur-section">
             <img class="blur-section__green" src="public/assets/images/green.png" alt="effet de flou vert">
             <img class="blur-section__blue" src="public/assets/images/blue.png" alt="effet de flou bleu">
         </div>
+    </section>
+
+
+    <section class="mx-5 col" id="code-col">
 
         <div class="w-75 anim-to-bottom">
             <?php 

@@ -1,6 +1,4 @@
 <?php
-    require('models/database.php');
-
     class InfoManager {
         private $_db;
 

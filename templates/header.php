@@ -7,7 +7,20 @@
     <div class="d-flex justify-content-between">
         
         <div class="d-flex">
-            <div class="name"><a class="text-light-blue" href="#">connexion</a></div>
+            <div class="d-flex align-items-center name">
+                <?php if (empty($_SESSION['username'])) { ?>
+                    <a class="text-light-blue mx-3" href="index.php?page=login">connexion</a>
+                <?php } else { ?>
+                    <div class="d-flex align-items-center">
+                        <a class="text-light-blue m-0 mx-3" href="index.php?page=admin"><?= strtolower(str_replace(' ', '-', $_SESSION['username'])) ?></a>
+      
+                        <form method="GET" action="index.php">
+                            <input type="hidden" name="page" value="admin">
+                            <button type="submit" name="logout" value="1">logout</button>
+                        </form>
+                    </div>
+                <?php } ?>
+            </div>
             <nav>
                 <ul class="navbar p-0">
                     <li class="<?php echo ($page === "home" || !isset($page) ? "active" : "");?>"><a class="text-light-blue" href="index.php?page=home">_bienvenue</a></li>
@@ -18,7 +31,7 @@
         </div>
         
         <div class="contact">
-            <a class="text-light-blue" href="#">_contacter-moi</a>
+            <a class="text-light-blue" href="index.php?page=contact">_contacter-moi</a>
         </div>
     </div>
 </header>

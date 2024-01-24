@@ -1,6 +1,8 @@
 <?php
+    session_start(); // On autorise l'enregistrement sous forme de session
     require('controllers/controller.php');
 
+    // ROUTEUR selon le GET page
     if (isset($_GET['page'])) {
         switch ($_GET['page'])
         {
@@ -15,6 +17,15 @@
                 break;
             case 'home':
                 homePage();
+                break;
+            case 'login':
+                login();
+                break;
+            case 'contact':
+                contact();
+                break;
+            case 'admin':
+                admin();
                 break;
             default:
                 error();
