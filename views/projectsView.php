@@ -1,4 +1,4 @@
-<?php ob_start(); ?>
+<?php $counter = 1; ob_start(); ?>
 
 <div class="h-100 d-flex section-central">
     <!-- Section qui affiche les centre d'interet -->
@@ -29,102 +29,39 @@
         </div>
 
         <div class="row">
-            <!-- // Projet 1 -->
-            <div class="d-flex align-items-center flex-column col-4 py-5">
 
-                <div class="d-flex">
-                    <h5 class="me-3 text-info project-card__title">Projet 1</h5>
-                    <p>// _mon-projet</p>
-                </div>
+            <!-- // Projet -->
+            <?php while ($p = $projects->fetch()) { ?>
 
-                <div class="project-card">
-                    <div class="window position-relative">
-                        <div class="window__icon">
-                            <img src="public/assets/images/react.svg" alt="icone langage">
-                        </div>
-                        <img class="project-card__bg" src="https://hubfi.fr/wp-content/uploads/2023/12/metiers-it-rentables-2024-1160x680.webp" alt="image it">
-                    </div>
-                    <div class="p-4 border-top-custom">
-                        <p>Duis aute irure dolor in velit esse cillum dolore.</p>
-                        <button>Voir le projet</button>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- // Projet 1 -->
             <div class="d-flex align-items-center flex-column col-4 py-5">
                 
                 <div class="d-flex">
-                    <h5 class="me-3 text-info project-card__title">Projet 1</h5>
-                    <p>// _mon-projet</p>
+                    <h5 class="me-3 text-info project-card__title">Projet <?= $counter?></h5>
+                    <p>// <?= $p['title'] ?></p>
                 </div>
 
                 <div class="project-card">
                     <div class="window position-relative">
                         <div class="window__icon">
-                            <img src="public/assets/images/react.svg" alt="icone langage">
+                            <!-- <img src="<?= $p['image'] ?>" alt="icone langage"> -->
                         </div>
-                        <img class="project-card__bg" src="https://hubfi.fr/wp-content/uploads/2023/12/metiers-it-rentables-2024-1160x680.webp" alt="image it">
+                        <img class="project-card__bg" src="<?= $p['image'] ?>" alt="image it">
                     </div>
                     <div class="p-4 border-top-custom">
-                        <p>Duis aute irure dolor in velit esse cillum dolore.</p>
-                        <button>Voir le projet</button>
+                        <p><?= $p['description'] ?></p>
+                        <a class="button" href="<?= $p['link'] ?>">Voir le projet</a>
                     </div>
                 </div>
 
             </div>
 
-            <!-- // Projet 3 -->
-            <div class="d-flex align-items-center flex-column col-4 py-5">
-                
-                <div class="d-flex">
-                    <h5 class="me-3 text-info project-card__title">Projet 1</h5>
-                    <p>// _mon-projet</p>
-                </div>
+            <?php $counter++; } ?>
 
-                <div class="project-card">
-                    <div class="window position-relative">
-                        <div class="window__icon">
-                            <img src="public/assets/images/react.svg" alt="icone langage">
-                        </div>
-                        <img class="project-card__bg" src="https://hubfi.fr/wp-content/uploads/2023/12/metiers-it-rentables-2024-1160x680.webp" alt="image it">
-                    </div>
-                    <div class="p-4 border-top-custom">
-                        <p>Duis aute irure dolor in velit esse cillum dolore.</p>
-                        <button>Voir le projet</button>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- // Projet 4 -->
-            <div class="d-flex align-items-center flex-column col-4 py-5">
-                
-                <div class="d-flex">
-                    <h5 class="me-3 text-info project-card__title">Projet 1</h5>
-                    <p>// _mon-projet</p>
-                </div>
-
-                <div class="project-card">
-                    <div class="window position-relative">
-                        <div class="window__icon">
-                            <img src="public/assets/images/react.svg" alt="icone langage">
-                        </div>
-                        <img class="project-card__bg" src="https://hubfi.fr/wp-content/uploads/2023/12/metiers-it-rentables-2024-1160x680.webp" alt="image it">
-                    </div>
-                    <div class="p-4 border-top-custom">
-                        <p>Duis aute irure dolor in velit esse cillum dolore.</p>
-                        <button>Voir le projet</button>
-                    </div>
-                </div>
-
-            </div>
         </div>
     </section>
 </div>
 
 <?php 
     $content = ob_get_clean();
-     require('templates/base.php'); 
+    require('templates/base.php'); 
 ?>

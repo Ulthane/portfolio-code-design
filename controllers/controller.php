@@ -41,6 +41,10 @@
     // Controleur de la page des projets
     function projectsPage() 
     {
+        $projectManager = new ProjectManager();
+
+        $projects = $projectManager->getProject();
+
         require('views/projectsView.php');
     }
 
