@@ -2,6 +2,7 @@
     require('models/database.php');
     require('models/loginManager.php');
     require('models/infoManager.php');
+    require('models/projectManager.php');
 
     
     // Controlleur de la page d'accueil
@@ -56,7 +57,7 @@
         // Si la session existe, on redirige vers la page d'admin
         if (isset($_SESSION['username']) && !empty($_SESSION['username']))
         {
-            header("location: index.php?page=admin");
+            header("location: index.php?page=admin&category-adm=pro_category");
         }
         
         // Sinon on va vérifier que l'on a setter le nom d'utilisateur et le mot de passe avant de contacter la DB
@@ -72,6 +73,8 @@
     // Controlleur pour la page d'administatrion
     function admin()
     {
+        $projectManager = new ProjectManager();
+
         // On vérifie que la session est setter et qu'elle n'est pas vide,
         // sinon on redirige vers le login
         if (!isset($_SESSION['username']) || empty($_SESSION['username']))
@@ -82,6 +85,20 @@
 
         // Fonction pour effacer les sessions
         LoginManager::getLogout();
+
+        // On vérifie si on a passer des champs, si oui on envoie le formulaire
+        if (isset($_POST['title']) && isset($_POST['description']) && isset($_POST['link']) && isset($_POST['tag']) && isset($_FILES['image']))
+        {
+            $projectManager->postProject($_POST);
+        }
+
+        // On vérifie qu'on a passer le paramètre delete ainsi qu'un id au format GET + POST
+        if (isset($_GET['delete']) && $_GET['delete'] == true)
+        {
+            $projectManager->deleteProject();
+        }
+
+        require('templates/navigation-admin.php');
 
         require('views/adminView.php');
         require('templates/base.php');

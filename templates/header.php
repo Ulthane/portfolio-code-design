@@ -12,8 +12,8 @@
                     <a class="text-light-blue mx-3" href="index.php?page=login">connexion</a>
                 <?php } else { ?>
                     <div class="d-flex align-items-center">
-                        <a class="text-light-blue m-0 mx-3" href="index.php?page=admin"><?= strtolower(str_replace(' ', '-', $_SESSION['username'])) ?></a>
-      
+                        <a class="text-light-blue m-0 mx-3" href="index.php?page=admin&category-adm=pro_category"><?= strtolower(str_replace(' ', '-', $_SESSION['username'])) ?></a>
+
                         <form method="GET" action="index.php">
                             <input type="hidden" name="page" value="admin">
                             <button type="submit" name="logout" value="1">logout</button>
