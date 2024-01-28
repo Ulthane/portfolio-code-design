@@ -12,6 +12,40 @@
             return $this->_db->query("SELECT * FROM projects");
         }
 
+        public function getProjectById()
+        {
+            $req = $this->_db->prepare("SELECT * FROM projects WHERE id = ?");
+            $req->execute([$_POST['selection']]);
+
+            while($res = $req->fetch())
+            {
+                return $res;
+            }
+        }
+
+        public function putProject()
+        {
+            // Déclaration des variables
+            $link = htmlspecialchars($_POST['link']);
+            $title = htmlspecialchars($_POST['title']);
+            $description = htmlspecialchars($_POST['description']);
+            $tag = htmlspecialchars($_POST['tag']);
+            $id = htmlspecialchars($_GET['modify']);
+
+            try 
+            {
+                $req = $this->_db->prepare("UPDATE projects SET title = ?, description = ?, tag = ?, link = ? WHERE id = ?");
+                $req->execute([$title, $description, $tag, $link, $id]);
+
+                header("location: index.php?page=admin&category-adm=pro_category&type=modify&error=0&message=Mise à jour effectuée avec succès");
+            }
+            catch (Exception $e)
+            {
+                header("location: index.php?page=admin&category-adm=pro_category&type=modify&error=1&message=Mise à jour en base échoué - ".$e->getMessage());
+                exit();
+            }
+        }
+
         public function postProject()
         {
             // Déclaration des variables
@@ -41,11 +75,11 @@
                 $req = $this->_db->prepare("INSERT INTO projects (title, description, image, tag, link) VALUES (?, ?, ?, ?, ?)");
                 $req->execute([$title, $description, $image, $tag, $link]);
 
-                header("location: index.php?page=admin&category-adm=pro_category&error=0&message=Insertion effectuée avec succès");
+                header("location: index.php?page=admin&category-adm=pro_category&type=add&error=0&message=Insertion effectuée avec succès");
             }
             catch (Exception $e)
             {
-                header("location: index.php?page=admin&category-adm=pro_category&error=1&message=Insertion en base échoué - ".$e->getMessage());
+                header("location: index.php?page=admin&category-adm=pro_category&type=add&error=1&message=Insertion en base échoué - ".$e->getMessage());
                 exit();
             }
 
@@ -65,7 +99,7 @@
                 {
                     if ($res['total'] <= 1)
                     {
-                        header("location: index.php?page=admin&category-adm=pro_category&error=1&message=Vous ne pouvez supprimer le dernier projet");
+                        header("location: index.php?page=admin&category-adm=pro_category&type=delete&error=1&message=Vous ne pouvez supprimer le dernier projet");
                         exit();
                     }
                 }
@@ -74,10 +108,12 @@
                 try {
                     $req = $this->_db->prepare("DELETE FROM projects WHERE id = ?");
                     $req->execute([$id]);
+
+                    header("location: index.php?page=admin&category-adm=pro_category&type=delete&error=0&message=Suppression effectuée avec succès !");
                 }
                 catch (Exception $e)
                 {
-                    header("location: index.php?page=admin&category-adm=pro_category&error=1&message=Erreur lors de la suppression - ".$e->getMessage());
+                    header("location: index.php?page=admin&category-adm=pro_category&type=delete&error=1&message=Erreur lors de la suppression - ".$e->getMessage());
                     exit();
                 }
             }
