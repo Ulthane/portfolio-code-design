@@ -32,7 +32,15 @@
         $infoManger = new InfoManager();
         $category = $infoManger->getPICategory(htmlspecialchars($_GET['category']));
         $title = $infoManger->getPITitle(htmlspecialchars($_GET['category']));
-        $content = $infoManger->getPIContent(htmlspecialchars($_GET['category']), htmlspecialchars($_GET['id']));
+        $content = null;
+
+        // if (isset($_GET['id']) && $_GET['id'] != "min")
+        // {
+            $content = $infoManger->getPIContent(htmlspecialchars($_GET['category']), htmlspecialchars($_GET['id']));
+        // }
+        // else {
+        //     $content = $infoManger->getPIContent(htmlspecialchars($_GET['category']), $infoManger->getFirstId($_GET['category']));
+        // }
 
         require('views/aboutMeView.php');
         require('templates/base.php'); 
@@ -42,7 +50,6 @@
     function projectsPage() 
     {
         $projectManager = new ProjectManager();
-
         $projects = $projectManager->getProject();
 
         require('views/projectsView.php');
@@ -61,7 +68,7 @@
         // Si la session existe, on redirige vers la page d'admin
         if (isset($_SESSION['username']) && !empty($_SESSION['username']))
         {
-            header("location: index.php?page=admin&category-adm=pro_category");
+            header("location: index.php?page=admin&category-adm=pro_category&type=add");
         }
         
         // Sinon on va vérifier que l'on a setter le nom d'utilisateur et le mot de passe avant de contacter la DB
@@ -83,11 +90,17 @@
         {
             $categoryAdm = "_projets";
         }
-
+        
         require('templates/navigation-admin.php');
         require('templates/navigation-type.php');
-
-        require('views/adminView.php');
+        
+        if ($_GET['category-adm'] === "pro_category")
+        {
+            require('views/adminProjectView.php');
+        } else {
+            require('views/adminInfoView.php');
+        }
+        
         require('templates/base.php');
     }
 

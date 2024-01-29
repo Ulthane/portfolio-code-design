@@ -19,6 +19,28 @@
             return $this->_db->query($query);
         }
 
+        public function getFirstId($category)
+        {
+            // Déclaration des variables
+            $table = "pi_content";
+
+            if ($category === "pro_category")
+            {
+                $table = "pro_content";
+            } else if ($category === "hob_category")
+            {
+                $table = "hob_content";
+            }
+
+            $query = "SELECT min(id) as id FROM $table";
+            $req = $this->_db->query($query);
+
+            while ($res = $req->fetch())
+            {
+                return $res['id'];
+            }
+        }
+
         public function getPITitle($category)
         {
             // Création d'un tableau qui recevra les categories

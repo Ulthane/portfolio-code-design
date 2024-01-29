@@ -59,7 +59,6 @@
     <!-- TRAITEMENT DE LA SECTION PRO_CAREGORY -->
     <!-- ************************************* -->
 
-    <?php if ($_GET['category-adm'] === "pro_category") { ?>
         <!-- Zone de navigation supérieure -->
         <?= $navigationType ?>
 
@@ -148,7 +147,7 @@
                 <p class="<?php echo $_GET['error'] == 0 ? "text-success fs-bold" : "text-danger fs-bold"?>"><?= $_GET['message'] ?></p>
             </div>
         <?php } ?>
-    <?php } ?>
+
     
     </section>
 </div>

@@ -1,4 +1,6 @@
-<?php ob_start(); ?>
+<?php 
+    ob_start(); 
+?>
 
 <div class="h-100 d-flex section-central">
     <!-- Section qui affiche la navigation -->

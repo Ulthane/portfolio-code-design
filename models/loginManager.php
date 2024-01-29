@@ -18,7 +18,7 @@
                 if ($res['total'] !== 0)
                 {
                     $_SESSION['username'] = "Mucha Sebastien";
-                    header("location: index.php?page=admin&category-adm=pro_category");
+                    header("location: index.php?page=admin&category-adm=pro_category&type=add");
                 } else {
                     header("location: index.php?page=login&error=1&message=Nom d'utilisateur ou mot de passe invalide");
                     exit();
