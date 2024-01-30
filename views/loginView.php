@@ -8,6 +8,7 @@
             } 
         ?>
     </div>
+    <h3>LOGIN</h3>
     <form class="d-flex flex-column align-items-center" method="POST" action="index.php?page=login">
         <div>
             <input required type="text" name="username" placeholder="Nom d'utilisateur">

@@ -175,8 +175,6 @@
                     </select>
                     <button type="submit">Supprimer</button>
                 </form>
-                <?php } else { ?>
-                    <h3 class="text-info">selectionner une catégorie</h3>
                 <?php } ?>
             <?php } ?>
         </div>

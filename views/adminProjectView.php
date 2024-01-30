@@ -88,7 +88,7 @@
                         <label for="image">image;</label>
                         <input id="image" type="file" name="image">
                     </div>
-                    <button type="submit">Envoyer</button>
+                    <button type="submit">envoyer</button>
             </form>
 
 
@@ -121,10 +121,8 @@
                         <label for="description">description;</label>
                         <textarea id="description" rows="5" name="description" placeholder="Je décrit mon super projet..."><?= $selectedProject['description'] ?></textarea>
                     </div>
-                    <button type="submit">Modifier</button>
+                    <button type="submit">modifier</button>
                 </form>
-                <?php } else { ?>
-                    <h3 class="text-info">selectionner un projet</h3>
                 <?php } ?>
 
 

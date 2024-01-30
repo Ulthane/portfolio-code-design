@@ -2,6 +2,14 @@
     class ProjectManager {
         private $_db;
 
+        private function _changeStr($string)
+        {
+            $str1 = str_replace('"', '\"', $string);
+            $str2 = str_replace("'", "\'", $str1);
+
+            return $str2;
+        }
+
         public function __construct()
         {
             $this->_db = DatabaseManager::getConnection(); 
@@ -78,7 +86,7 @@
             try 
             {
                 $req = $this->_db->prepare("UPDATE projects SET title = ?, description = ?, tag = ?, link = ? WHERE id = ?");
-                $req->execute([$title, $description, $tag, $link, $id]);
+                $req->execute([$title, $this->_changeStr($description), $tag, $link, $id]);
 
                 header("location: index.php?page=admin&category-adm=pro_category&type=modify&error=0&message=Mise à jour effectuée avec succès");
             }
@@ -109,7 +117,7 @@
             try 
             {
                 $req = $this->_db->prepare("UPDATE $table SET title = ?, content = ? WHERE id = ?");
-                $req->execute([$title, $content, $id]);
+                $req->execute([$title, $this->_changeStr($content), $id]);
         
                 header("location: index.php?page=admin&category-adm=pi_category&type=modify&error=0&message=Mise à jour effectuée avec succès");
             }
@@ -147,7 +155,7 @@
             try 
             {
                 $req = $this->_db->prepare("INSERT INTO projects (title, description, image, tag, link) VALUES (?, ?, ?, ?, ?)");
-                $req->execute([$title, $description, $image, $tag, $link]);
+                $req->execute([$title, $this->_changeStr($description), $image, $tag, $link]);
 
                 header("location: index.php?page=admin&category-adm=pro_category&type=add&error=0&message=Insertion effectuée avec succès");
             }
@@ -161,6 +169,10 @@
 
         public function postArticle()
         {
+            $selectioncategory = htmlspecialchars($_POST['selection-category']);
+            $title = htmlspecialchars($_POST['title']);
+            $content = htmlspecialchars($_POST['content']);
+            
             $table = "pi_content";
 
             if ($_GET['selection'] === "pro_category")
@@ -171,7 +183,7 @@
                 $table = "hob_content";
             }
 
-            $query = "INSERT INTO ".$table." (category_id, title, content) VALUES (".$_POST['selection-category'].",'".$_POST['title']."','".$_POST['content']."')";
+            $query = 'INSERT INTO '.$table.' (category_id, title, content) VALUES ("'.$selectioncategory.'","'.$title.'","'.$this->_changeStr($content).'")';
 
             try
             {
