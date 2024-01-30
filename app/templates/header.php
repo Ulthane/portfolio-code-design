@@ -1,5 +1,8 @@
 <?php
     isset($_GET['page']) ? $page = $_GET['page'] : $page = null;
+
+    $infoManager = new InfoManager();
+
     ob_start(); 
 ?>
 
@@ -23,7 +26,7 @@
             <nav>
                 <ul class="navbar p-0">
                     <li class="<?php echo ($page === "home" || !isset($page) ? "active" : "");?>"><a class="text-secondary" href="index.php?page=home">_bienvenue</a></li>
-                    <li class="<?php echo ($page === "about-me" ? "active" : "");?>"><a class="text-secondary" href="index.php?page=about-me&category=pro_category&id=1">_a-propos</a></li>
+                    <li class="<?php echo ($page === "about-me" ? "active" : "");?>"><a class="text-secondary" href="<?= "index.php?page=about-me&category=pro_category&id=".$infoManager->getFirstId('pro_category') ?>">_a-propos</a></li>
                     <li class="<?php echo ($page === "projects" ? "active" : "");?>"><a class="text-secondary" href="index.php?page=projects">_projets</a></li>
                 </ul>
             </nav>
