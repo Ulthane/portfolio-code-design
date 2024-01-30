@@ -12,7 +12,7 @@
     <script src="https://kit.fontawesome.com/651bf0046b.js" crossorigin="anonymous"></script>
     <title>Portfolio WEB</title>
 </head>
-<body>
+<body class="bg-primary text-secondary">
     <?= $header ?>
     <?= $content ?>
     <?= $footer ?>

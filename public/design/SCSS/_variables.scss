@@ -2,7 +2,14 @@ $primary: #FEA55F;
 $info: #4D5BCE;
 $light: #E5E9F0;
 $success: #43D9AD;
-
 $light-blue: #607B96;
 $bg: #011627;
 $border: #1E2D3D;
+
+$theme-colors: (
+    'primary': $bg,
+    'secondary': $light-blue,
+    'info': $info,
+    'light': $light,
+    'success': $success,
+)

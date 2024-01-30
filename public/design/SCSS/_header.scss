@@ -1,6 +1,5 @@
 header {
     border-bottom: 1px solid $border;
-    background-color: $bg;
     position: fixed;
     top: 0;
     width: 100%;
@@ -10,7 +9,6 @@ header {
 
     & .name {
         width: 300px;
-        // margin: 15px;
     }
 
     & .navbar {
